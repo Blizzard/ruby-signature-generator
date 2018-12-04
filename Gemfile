@@ -9,4 +9,5 @@ gem 'sinatra'
 gem 'oauth2'
 gem 'json'
 gem 'httparty'
-gem "mini_magick"
+gem 'mini_magick'
+gem 'thin'
