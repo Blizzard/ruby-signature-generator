@@ -64,13 +64,3 @@ get '/:realm/:name' do |realm, name|
   content_type 'image/png'
   get_signature(name, realm)
 end
-
-get '/classes' do
-  content_type :json
-  get_classes.to_json
-end
-
-get '/' do
-  content_type :json
-  get_token.to_json
-end
