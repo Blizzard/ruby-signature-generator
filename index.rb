@@ -33,7 +33,7 @@ end
 def get_image(character)
   url = "https://render-us.worldofwarcraft.com/character/#{character["thumbnail"].sub("-avatar.jpg", "-inset.jpg")}"
   avatar = MiniMagick::Image.open(url)
-  bg = MiniMagick::Image.open("./images/background-0.png")
+  bg = MiniMagick::Image.open("./images/background-#{character["faction"]}.png")
   empty = MiniMagick::Image.open("./empty.png")
 
   sig = empty.composite(avatar) do |c|
