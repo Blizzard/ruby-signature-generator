@@ -1,0 +1,14 @@
+{
+  "name": "Sample Signature Generator - Ruby",
+  "description": "A sample app using the Blizzard Developer APIs",
+  "env": {
+    "CLIENT_ID": {
+      "description": "The Client ID from develop.battle.net",
+      "value": ""
+    },
+    "CLIENT_SECRET": {
+      "description": "The Client Secret from develop.battle.net",
+      "value": ""
+    }
+  }
+}
