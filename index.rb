@@ -11,16 +11,16 @@ $client = OAuth2::Client.new(ENV['CLIENT_ID'],
                               site: 'https://us.battle.net')
 $token = nil
 
-def get_token
+def token
   $token = $client.client_credentials.get_token if !$token || $token.expired?
 
   $token.token
 end
 
-def get_classes
+def classes
   HTTParty.get('https://us.api.blizzard.com/wow/data/character/classes',
                query: { "locale": 'en_US' },
-               headers: { "Authorization": "Bearer #{get_token}" })['classes']
+               headers: { "Authorization": "Bearer #{token}" })['classes']
           .each_with_object({}) do |c, h|
     h[c['id']] = c['name']
   end
@@ -30,7 +30,7 @@ def get_character(name, realm)
   HTTParty.get("https://us.api.blizzard.com/wow/character/#{realm.downcase}/#{name.downcase}",
                query: { "fields": 'guild,items',
                         "locale": 'en_US' },
-               headers: { "Authorization": "Bearer #{get_token}" })
+               headers: { "Authorization": "Bearer #{token}" })
 end
 
 def get_image(character)
@@ -59,7 +59,7 @@ end
 
 def get_signature(name, realm)
   character = get_character(name, realm)
-  character['class_name'] = get_classes[character['class']]
+  character['class_name'] = classes[character['class']]
   get_image(character)
 end
 
