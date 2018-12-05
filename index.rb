@@ -48,7 +48,7 @@ def get_image(character)
     i.font("./fonts/merriweather/Merriweather-Regular.ttf")
     i.pointsize(12)
     i.fill("#888888")
-    i.draw("text 220,65  'Level #{character["level"]} #{character["class_name"]} #{character["guild"] ? "of " + character["guild"]["name"] + " " : ""}on #{character["realm"]}'")
+    i.draw("text 220,65  'Level #{character["level"]} #{character["class_name"]} #{character["guild"] ? "of <" + character["guild"]["name"] + "> " : ""}on #{character["realm"]}'")
     i.draw("text 220,85  'Item Level: #{character["items"]["averageItemLevel"]} (#{character["items"]["averageItemLevelEquipped"]})'")
     i.draw("text 220,105 'Achievement Points: #{character["achievementPoints"]}'")
   end.to_blob
