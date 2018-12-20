@@ -63,7 +63,7 @@ def get_signature(name, realm)
   get_image(character)
 end
 
-get '/:realm/:name' do |realm, name|
+get '/signature' do
   content_type 'image/png'
-  get_signature(name, realm)
+  get_signature(params[:characterName], params[:realmName])
 end
